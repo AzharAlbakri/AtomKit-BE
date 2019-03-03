@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
-const db = require("../database/index");
+const db = require("./db");
 const PORT = process.env.PORT || 5000;
 const mongoose = require("mongoose");
 //mongoose.connect('mongodb://localhost/test');
@@ -14,7 +14,7 @@ const db1 = mongoose.connection;
 const app = express();
 
 // Priority serve any static files.
-app.use(express.static(path.resolve(__dirname, "../client/public")));
+// app.use(express.static(path.resolve(__dirname, "../client/public")));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -117,9 +117,9 @@ app.post("/addcourse", function(req, res) {
 });
 
 // All remaining requests return the React app, so it can handle routing.
-app.get("*", function(request, response) {
-  response.sendFile(path.resolve(__dirname, "../client/public", "index.html"));
-});
+// app.get("*", function(request, response) {
+//   response.sendFile(path.resolve(__dirname, "../client/public", "index.html"));
+// });
 
 app.listen(PORT, function() {
   console.error(
