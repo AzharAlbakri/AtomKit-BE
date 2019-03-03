@@ -27,8 +27,14 @@ let Subject = db1.collection("subjects");
 let Teacher = db1.collection("teachers");
 let Course = db1.collection("courses");
 
-
 //Get data
+//home
+app.get("/", function(req, res) {
+  
+    res.send('AtomKit Home, please add /teacher or /course or /subject as end point to retrieve data');
+
+});
+
 //subject API
 app.get("/subject", function(req, res) {
     Subject
